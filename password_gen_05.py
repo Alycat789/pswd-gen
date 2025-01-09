@@ -102,6 +102,7 @@ class Interface:
 
         custom = Toplevel()
         custom.title("Custom Password Options")
+        custom.geometry("+200+370")
         opt = Label(custom, text = "Options: ")
         opt.grid(row = 0, column = 0, columnspan = 5)
         include = Label(custom, text = "Include: ")
@@ -174,6 +175,7 @@ class Interface:
         """creates root window
         includes strength options, 'create' button, and event for button to run program"""
         self.root.title("Password Generator")
+        self.root.geometry("+100+200")
         msg = Label(self.root, text = "    How strong do you want your password? : (custom opens a new window) (result will be shown below) \nweak = 8 lowercase letters\nmedium = 9-14 numbers and letters\nstrong = 15-20 symbols, numbers, and letters  ")
         msg.grid(row = 0, columnspan = 5)
         Radiobutton(self.root, text = "weak", variable = self.strength, value = 1).grid(row = 1, column = 1)
