@@ -26,9 +26,12 @@ class PasswordGen:
         self.symbol = symbols
 
     def __repr__(self):
+        """returns a password string specific to the current settings in the UI"""
         return self.generate()
     
     def custom(self) -> str:
+        """returns a custom pswd as a list, dependent on current selected settings. 
+        first compiles a list of all possible characters, then randomly selects characters to fill the desired length"""
         c = []
         if self.letter:
             for l in PasswordGen.letters:
@@ -42,12 +45,15 @@ class PasswordGen:
         return [choice(c) for _ in range(int(self.length))]
 
     def case(self, string) -> str:
+        """changes the case of letters in the object depending on current settings"""
         if self.l_case == 1:
             return string.upper()
         if self.l_case == 2:
             return string.lower()
     
     def get_char(self) -> str:
+        """returns the pswd of a specific strength type as a list. 
+        generates a list of all possible characters, randomly selects from that list to desired length"""
         if self.strength == 1:
             s = list(PasswordGen.letters)
             self.length = 8
@@ -62,6 +68,8 @@ class PasswordGen:
             return [choice(s) for _ in range(self.length)]
         
     def generate(self) -> str:
+        """calls custom() or get_char() and converts the returned list pswd to a string
+        returns final pswd in string form"""
         if self.strength == 4:
             self.pswd = "".join(self.custom())
             if self.l_case != 0:
@@ -80,6 +88,9 @@ class Interface:
         self.strength = IntVar()
 
     def custom(self):
+        """creates and operates a separate window for custom strength level options: 
+        character type, length, and case
+        event for button creates error or sends created pswd back to the root window"""
         custom = Toplevel()
         custom.title("Custom Password Options")
         opt = Label(custom, text = "Options: ")
@@ -114,6 +125,9 @@ class Interface:
 
 
     def on_custom_create(self, event, dig, let, sym, len, case):
+        """event reaction to the create button in the custom window
+        generates an error message if no character type is selected in the custom window OR
+        creates the custom pswd object and displays it on the root window"""
         if dig == False and let == False and sym == False:
             err = Toplevel()
             err.title("Error")
@@ -128,6 +142,9 @@ class Interface:
             pswd.insert(0, pg)
 
     def on_click_create(self, event):
+        """event for create button on root window
+        creates a pswd object of desired strength 
+        displays created pswd at bottom of window"""
         if self.strength.get() == 4:
             self.custom()
         else:
@@ -144,6 +161,8 @@ class Interface:
             pswd.insert(0, pg)
 
     def build(self):
+        """creates root window
+        includes strength options, 'create' button, and event for button to run program"""
         self.root.title("Password Generator")
         msg = Label(self.root, text = "    How strong do you want your password? : (custom opens a new window, result will be shown below.)   ")
         msg.grid(row = 0, columnspan = 5)
