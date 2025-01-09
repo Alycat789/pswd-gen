@@ -19,9 +19,19 @@ PassGenerator class
     generate() - the list created by get_char() is made into a string
 
 Interface class ( imports PassGenerator )
+*** add storage function ***
     build() - creates and runs the GUI
     custom() - builds a Toplevel widget box for the custom options
         on_letters() - enables/disables l_case options depending on state of letters checkbox
     on_click_create() - creates pswd object, creates area at bottom of window that displays object OR executes on_custom()
     on_custom_create() - creates pswd object, creates area at bottom of window that displays object
     main() - run app
+
+StorageBin class
+*** need to research ***
+    -create database once
+    -add/delete labeled usernames and passwords
+    -view saved passwords
+    - does python have a library for working with SQL???
+    -root PasswordGen window will have a button to take you to see the database?
+    -maybe create a new root window with a menu to navigate between PassGenerator and StorageBin UIs
