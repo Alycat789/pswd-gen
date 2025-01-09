@@ -19,8 +19,9 @@ PassGenerator class
     generate() - the list created by get_char() is made into a string
 
 Interface class ( imports PassGenerator )
-    build() - creates the GUI as seen before interaction
-    on_custom() - builds a Toplevel widget box for the custom options
+    build() - creates and runs the GUI
+    custom() - builds a Toplevel widget box for the custom options
+        on_letters() - enables/disables l_case options depending on state of letters checkbox
     on_click_create() - creates pswd object, creates area at bottom of window that displays object OR executes on_custom()
     on_custom_create() - creates pswd object, creates area at bottom of window that displays object
     main() - run app
