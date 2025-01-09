@@ -1,0 +1,26 @@
+A Password Generator
+
+An application, run through a GUI, that provides options to create any kind of password that you would like. 
+Choose strong, medium, weak, or custom.
+
+options:
+    include - certain word(s)    *(nice to have? is this a good idea? decide later)*
+    l_case - upper, lower, combo
+    letters - y/n
+    symbols - y/n
+    digits - y/n
+    spaces - y/n                  *(again. not sure if it should be included)*
+
+PassGenerator class
+    __repr_ - returns the result of running generate() with the current parameters
+    get_char() - handles what gets included in the password for strong med, weak options
+    custom() - handles what gets put in the pswd for custom strength option, if needed implements case()
+    case() - handles the case preferences of the user, Starts off as combo, action only needed if upper or lower is selected.
+    generate() - the list created by get_char() is made into a string
+
+Interface class ( imports PassGenerator )
+    build() - creates the GUI as seen before interaction
+    on_custom() - builds a Toplevel widget box for the custom options
+    on_click_create() - creates pswd object, creates area at bottom of window that displays object OR executes on_custom()
+    on_custom_create() - creates pswd object, creates area at bottom of window that displays object
+    main() - run app
