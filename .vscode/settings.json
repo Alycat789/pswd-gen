@@ -4,6 +4,8 @@
         "activeforeground",
         "columnspan",
         "lcase",
-        "pswd"
+        "pswd",
+        "repr",
+        "Toplevel"
     ]
 }
