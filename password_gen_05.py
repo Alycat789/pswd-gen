@@ -5,7 +5,6 @@ from secrets import choice
 import string
 
 """A Password Generator
-
 An application, run through a GUI, that provides options to create any kind of password that you would like. 
 Choose strong, medium, weak, or custom."""
 
@@ -100,6 +99,7 @@ class Interface:
                 Radiobutton(custom, text = "both", variable = case, value = 0, state = DISABLED).grid(row = 6, column = 2)
                 Radiobutton(custom, text = "upper", variable = case, value = 1, state = DISABLED).grid(row = 6, column = 3)
                 Radiobutton(custom, text = "lower", variable = case, value = 2, state = DISABLED).grid(row = 6, column = 4)
+
         custom = Toplevel()
         custom.title("Custom Password Options")
         opt = Label(custom, text = "Options: ")
@@ -116,14 +116,12 @@ class Interface:
         length_label.grid(row = 3, column = 0)
         length = Spinbox(custom, from_ = 7, to = 25, width = 10)
         length.grid(row = 4, column = 1)
-
         case_label = Label(custom, text = "Case: ")
         case_label.grid(row = 5, column = 0)
         case = IntVar()
         Radiobutton(custom, text = "both", variable = case, value = 0, state = DISABLED).grid(row = 6, column = 2)
         Radiobutton(custom, text = "upper", variable = case, value = 1, state = DISABLED).grid(row = 6, column = 3)
         Radiobutton(custom, text = "lower", variable = case, value = 2, state = DISABLED).grid(row = 6, column = 4)
-
         run_custom = Button(custom, text = "Create", activebackground = "blue", activeforeground = "white")
         run_custom.grid(row = 8, column = 2)
 
@@ -140,7 +138,7 @@ class Interface:
             err.title("Error")
             err_label = Label(err, text = "Password must include one of the following:\nletters, digits, symbols", bg = "red", fg = "black")
             err_label.pack()
-        if int(len) < 7:
+        elif int(len) < 7:
             err = Toplevel()
             err.title("Error")
             err_label = Label(err, text = "Password length must be greater than 6", bg = "red", fg = "black")
